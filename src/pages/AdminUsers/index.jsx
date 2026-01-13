@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component';
 import Swal from 'sweetalert2';
-import { getUsers, createUser, deleteUser, updateUser, getRoles, createRole, deleteRole } from "../api/admin";
+import { getUsers, createUser, deleteUser, updateUser, getRoles, createRole, deleteRole } from "../../api/admin";
 
 export default function AdminUsers() {
   const [users, setUsers] = useState([]);

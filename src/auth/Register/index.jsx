@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { signup } from "../api/auth";
+import { register } from "../../api/auth";
 import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-export default function Signup() {
+export default function Register() {
   const [form, setForm] = useState({ username: "", password: "" });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -28,24 +28,24 @@ export default function Signup() {
 
     setLoading(true);
     try {
-      const res = await signup(form);
+      const res = await register(form);
 
       // Save user info in localStorage
       localStorage.setItem("user", JSON.stringify({ username: form.username }));
 
       Swal.fire({
         icon: "success",
-        title: "Signup Successful",
+        title: "Register Successful",
         text: `Welcome, ${form.username}!`,
         timer: 1500,
         showConfirmButton: false,
       });
 
-      navigate("/login"); // Redirect to login after signup
+      navigate("/login"); // Redirect to login after register
     } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Signup Failed",
+        title: "Register Failed",
         text: error?.response?.data?.message || "Username may already exist",
       });
     } finally {
@@ -56,7 +56,7 @@ export default function Signup() {
   return (
     <div className="container">
       <div className="card shadow-sm p-4" style={{ maxWidth: "400px", margin: "50px auto" }}>
-        <h2 className="mb-3 text-center">Sign Up</h2>
+        <h2 className="mb-3 text-center">Register</h2>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -86,7 +86,7 @@ export default function Signup() {
           </div>
 
           <button type="submit" className="btn btn-primary w-100" disabled={loading}>
-            {loading ? "Signing up..." : "Sign Up"}
+            {loading ? "Signing up..." : "Register"}
           </button>
         </form>
 

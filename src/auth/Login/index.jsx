@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login } from "../api/auth";
+import { login } from "../../api/auth";
 import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -82,8 +82,8 @@ export default function Login() {
 
         <p className="text-center text-muted">
           Don't have an account?{" "}
-          <Link to="/signup" className="text-decoration-none">
-            Sign Up
+          <Link to="/register" className="text-decoration-none">
+            Register
           </Link>
         </p>
       </div>

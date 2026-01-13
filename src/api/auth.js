@@ -1,7 +1,7 @@
 import api from "./axios";
 
-export const signup = (payload) =>
-  api.post("/auth/signup", payload);
+export const register = (payload) =>
+  api.post("/auth/register", payload);
 
 export const login = async (credentials) => {
   try {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import api from "../api/axios";
+import api from "../../api/axios";
 import Swal from "sweetalert2";
 
 export default function RAGSearch() {

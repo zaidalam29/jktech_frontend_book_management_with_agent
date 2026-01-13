@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import api from "../api/axios";
+import api from "../../api/axios";
 
 export default function Documents() {
   const [documents, setDocuments] = useState([]);

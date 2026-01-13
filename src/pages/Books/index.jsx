@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getBooks, deleteBook, getBookById } from "../api/books";
+import { getBooks, deleteBook, getBookById } from "../../api/books";
 import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
 import { useNavigate, Link } from "react-router-dom";

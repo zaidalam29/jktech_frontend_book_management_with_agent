@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Login from "./auth/Login";
-import Signup from "./auth/Signup";
+import Register from "./auth/Register";
 import Books from "./pages/Books";
 import AddBook from "./pages/AddBook";
 import AdminUsers from "./pages/AdminUsers";
@@ -25,13 +25,13 @@ function Layout({ children }) {
 
 function AppContent() {
   const location = useLocation();
-  const isAuthPage = ["/login", "/signup"].includes(location.pathname);
+  const isAuthPage = ["/login", "/register"].includes(location.pathname);
 
   return (
     <Routes>
       {/* Auth pages (No sidebar) */}
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/" element={<Login />} />
 
       {/* Protected Pages (With sidebar) */}

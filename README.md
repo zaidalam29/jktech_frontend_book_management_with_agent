@@ -1,89 +1,152 @@
-# 🚀 JKTech Book Portal Frontend
+# Document Intelligence & QnA Frontend  
 
-**Modern React UI** for Book & Document Management with AI-powered RAG search.  
-*Built by Zaid Alam - Full Stack Developer + Gen AI Engineer*
+This is a simple React based frontend project for managing books and documents.  
+It also supports AI based search to find answers from uploaded documents.  
 
-## ✨ Key Capabilities
+Project created by **Zaid Alam**.  
 
-- 📱 Responsive Dashboard
-- 🔐 Secure JWT Authentication
-- 📚 Complete Book CRUD Operations
-- 📁 Document Upload/Download
-- 🧠 AI-Powered Semantic Search
-- 👑 Admin User Management
-- ⚡ Real-time Document Summaries
+---
 
-## 🧭 Navigation Routes
+## Main Features  
 
-| Route | Description |
-|-------|-------------|
-| `/login` | Secure user authentication |
-| `/dashboard` | Main overview with stats |
-| `/books` | Book catalog with search |
-| `/add-book` | Create new book entry |
-| `/documents` | File management center |
-| `/search` | RAG-powered document search |
-| `/admin` | User & role administration |
-| `/ai-summary` | Instant document insights |
+- Responsive UI that works on mobile and desktop  
+- Login system using JWT authentication  
+- Add, update, delete and view books  
+- Upload and download documents  
+- Search inside documents using AI  
+- Admin panel to manage users  
+- Get quick summaries of documents using AI  
 
-## 🔌 Backend Integration
+---
 
-**API Base URL:** `http://localhost:8000`
+## Application Routes  
 
-### Essential Endpoints
+/login  
+Used for user login and authentication  
 
-- **Authentication:** POST /auth/login, /auth/logout
-- **Books:** GET/POST/PUT/DELETE /books
-- **Documents:** POST /documents/upload, GET /documents/{id}/download
-- **RAG:** POST /search
-- **Admin:** GET/POST /admin/users
+/dashboard  
+Shows overall information and basic statistics  
 
-## 🐳 Docker One-Click Deploy
+/books  
+Shows the list of all books and allows searching  
+
+/add-book  
+Used to add a new book  
+
+/documents  
+Used to upload, view and download documents  
+
+/search  
+Used for AI based document search (RAG search)  
+
+/admin  
+Used by admin to manage users and roles  
+
+/ai-summary  
+Used to generate instant summaries of documents  
+
+---
+## Backend Connection Details  
+
+**Main API Address:**  
+http://localhost:8000  
+
+### Important API Paths  
+
+Authentication related:  
+POST /auth/login  
+POST /auth/logout  
+
+Book related:  
+GET /books  
+POST /books  
+PUT /books  
+DELETE /books  
+
+Document related:  
+POST /documents/upload  
+GET /documents/{id}/download  
+
+Search related (RAG):  
+POST /search  
+
+Admin related:  
+GET /admin/users  
+POST /admin/users  
+
+---
+
+## Docker Based Setup  
+
+You can run the project easily using Docker.
+
 ```bash
-# Build & Run
-docker build -t jktech_frontend_book_management_with_agent .
-docker run -p 3000:3000 -e REACT_APP_API_URL=http://localhost:8000 jktech_frontend_book_management_with_agent
+# Create image
+docker build -t frontend_book_doc_app .
+
+# Start container
+docker run -p 3000:3000 -e REACT_APP_API_URL=http://localhost:8000 frontend_book_doc_app
 ```
 
-**🌐 Live:** http://localhost:3000
+Application will be available at:
 
-## 🚀 Quick Local Setup
-```bash
+http://localhost:3000
+
+---
+
+### Run Project on Local System
+
+# Download project
 git clone <repo-url>
-cd jktech_frontend_book_management_with_agent
-npm ci          # Clean install
-npm run dev     # Development server
-npm run build   # Production build
-npm run preview # Preview production
-```
 
-## 🛠 Tech Stack
+# Go inside project folder
+cd frontend_book_doc_app
 
-- **Frontend:** React 18 + Vite + TypeScript
-- **Routing:** React Router v6
-- **State:** Zustand + React Query
-- **UI:** Tailwind CSS + shadcn/ui
-- **Data:** TanStack Table + React Hook Form
-- **API:** Axios + React Query
-- **Charts:** Recharts + Lucide Icons
+# Install dependencies
+npm install
 
-## 🎯 Smart Features
+# Start development mode
+npm run dev
 
-### ✅ Offline-First Development
+# Create production files
+npm run build
 
-- ✓ Mock API responses included
-- ✓ Full UI functionality without backend
-- ✓ Realistic demo data for testing
-- ✓ Hot reload with error boundaries
+# Test production build
+npm run preview
 
-### ✅ Production Ready
+---
+## Technology Used
 
-- ✓ Code splitting & lazy loading
-- ✓ SEO optimized with React Helmet
-- ✓ PWA capabilities built-in
-- ✓ Bundle analyzer included
+- Frontend Framework: React 18 with Vite and TypeScript  
+- Navigation System: React Router v6  
+- State Handling: Zustand and React Query  
+- Design & Styling: Tailwind CSS with shadcn/ui  
+- Forms & Tables: React Hook Form and TanStack Table  
+- API Communication: Axios with React Query  
+- Charts & Graphs: Recharts  
 
-## 🔍 API Contract
+---
+
+## Smart Capabilities
+
+### Offline Mode Support
+
+- Sample API data is already added  
+- Application runs fully without backend  
+- Demo records are available for testing  
+- Fast reload during development with error handling  
+
+### Ready for Production
+
+- Code is split into smaller parts for faster loading  
+- SEO support using React Helmet  
+- PWA features are included  
+- Bundle size checking tool is available  
+
+---
+
+## API Data Structure
+
 ```typescript
 interface Book {
   id: string;
@@ -101,52 +164,62 @@ interface DocumentSearchResult {
   summary: string;
 }
 ```
+### Speed & Performance
 
-## ⚡ Performance Optimizations
+-Final build size is under 150KB (gzipped)
 
-- **Bundle size:** < 150KB gzipped
-- **Lighthouse score:** 95+
-- **TTFB:** < 100ms
-- **FCP:** < 1.2s
+-Lighthouse rating is above 95
 
-## 📱 Responsive Breakpoints
+-Server response time is below 100ms
 
-**Mobile-first design**
-
-- ✓ Mobile: 320px+
-- ✓ Tablet: 768px+
-- ✓ Desktop: 1024px+
-- ✓ Wide: 1440px+
-
-## 🚀 Getting Started
-
-### 1. Prerequisites
-```bash
-Node.js 18+ | npm 9+ | Docker (optional)
-```
-
-### 2. Environment Setup
-```bash
-cp .env.example .env.local
-# Add your API_URL and keys
-```
-
-### 3. Development Workflow
-```bash
-npm run dev     # → localhost:5173
-npm run lint    # → Fix code quality
-npm run test    # → 95%+ coverage
-npm run storybook # → Component library
-```
-
-## 🔗 Live Demos
-
-- **Swagger Backend Docs:** http://localhost:8000/docs  
-- **Frontend:** http://localhost:3000  
-- **Admin Panel:** http://localhost:3000/admin
+-First screen load is under 1.2 seconds
 
 ---
+### Screen Size Support
 
-⭐ **Star on GitHub** | 📱 **Live Demo** | 💬 **Issues**
+-The design is mobile first and works on all screen sizes.
 
-*© 2026 Zaid Alam - Full Stack Developer + Gen AI Engineer | JKTech Frontend v2.0*
+-Mobile: 320px and above
+
+-Tablet: 768px and above
+
+-Desktop: 1024px and above
+
+-Large screens: 1440px and above
+
+### How to Start the Project
+- 1. Requirements
+
+```bash
+Node.js 18+ , npm 9+ , Docker (if needed)
+```
+- 2. Environment Configuration
+```bash
+cp .env.example .env.local
+```
+
+- 3. Development Commands
+
+```bash
+Copy code
+npm run dev        # Start development server on localhost:5173
+npm run lint       # Check and improve code quality
+npm run test       # Run test cases
+npm run storybook  # Open component preview library
+```
+
+# Running Links
+- Backend API Docs:
+ http://localhost:8000/docs
+
+- Frontend Application:
+http://localhost:3000
+
+
+---
+© 2026 Zaid Alam
+Full Stack Developer and Gen AI Engineer
+JKTech Frontend Version 2.0
+
+
+---
