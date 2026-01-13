@@ -51,7 +51,7 @@ export default function AddBook() {
 
       Swal.fire({
         icon: "success",
-        title: "Book Added Successfully",
+        title: "Book Created Successfully",
         text: "Redirecting to book list...",
         timer: 1500,
         showConfirmButton: false
@@ -62,7 +62,7 @@ export default function AddBook() {
       console.error(error);
       Swal.fire({
         icon: "error",
-        title: "Failed to Add Book",
+        title: "Failed to Create Book",
         text: "Something went wrong. Please try again.",
         confirmButtonColor: "#dc3545"
       });
@@ -76,9 +76,9 @@ export default function AddBook() {
 
       {/* 🔹 PAGE HEADER */}
       <div className="mb-4">
-        <h3 className="fw-semibold mb-1">Add New Book</h3>
+        <h3 className="fw-semibold mb-1">Create New Book</h3>
         <p className="text-muted mb-3">
-          Fill in the details below to add a new book to the library collection.
+          Fill in the details below to create a new book to the library collection.
         </p>
 
         {/* 🔹 BREADCRUMB */}
@@ -90,7 +90,7 @@ export default function AddBook() {
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              Add Book
+              Create Book
             </li>
           </ol>
         </nav>
@@ -174,7 +174,7 @@ export default function AddBook() {
                 ) : (
                   <>
                     <i className="bi bi-save me-2"></i>
-                    Add Book
+                    Create Book
                   </>
                 )}
               </button>
