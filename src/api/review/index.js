@@ -1,4 +1,4 @@
-import api from "./axios";
+import api from "../axios";
 
 export const addReview = (bookId, data) =>
   api.post(`/books/${bookId}/reviews`, data);

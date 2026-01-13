@@ -1,41 +1,42 @@
-import api from "./axios";
+import api from "../axios";
 
 // Mock RAG responses for development
 const mockSearchResults = [
   {
     id: 1,
-    title: "Introduction to Machine Learning",
-    content: "Machine learning is a subset of artificial intelligence that focuses on algorithms and statistical models that enable computers to improve their performance on a specific task through experience.",
-    source: "ml_textbook.pdf",
-    score: 0.95,
+    title: "How the Internet Works",
+    content: "The internet is a global network of computers that communicate using standardized protocols. When you open a website, your request travels through multiple servers using DNS, HTTP/HTTPS, and TCP/IP before the response is sent back to your browser.",
+    source: "networking_basics.pdf",
+    score: 0.91,
     metadata: {
-      page: 15,
-      chapter: "Chapter 1: Fundamentals"
+      page: 5,
+      chapter: "Chapter 1: Internet Fundamentals"
     }
   },
   {
     id: 2,
-    title: "Deep Learning Fundamentals",
-    content: "Deep learning uses neural networks with multiple layers to model and understand complex patterns in data. It has revolutionized fields like computer vision and natural language processing.",
-    source: "deep_learning_guide.pdf",
-    score: 0.87,
+    title: "Healthy Lifestyle Habits",
+    content: "A healthy lifestyle includes balanced nutrition, regular physical activity, proper sleep, and stress management. These habits improve physical health, mental well-being, and overall quality of life.",
+    source: "health_guidebook.pdf",
+    score: 0.88,
     metadata: {
-      page: 42,
-      chapter: "Chapter 3: Neural Networks"
+      page: 12,
+      chapter: "Chapter 2: Daily Wellness"
     }
   },
   {
     id: 3,
-    title: "Natural Language Processing",
-    content: "NLP combines computational linguistics with machine learning to help computers understand, interpret, and generate human language in a valuable way.",
-    source: "nlp_handbook.pdf",
-    score: 0.82,
+    title: "Basics of Financial Planning",
+    content: "Financial planning is the process of managing income, expenses, savings, and investments to achieve long-term financial stability and personal goals such as buying a house or retirement.",
+    source: "finance_basics.pdf",
+    score: 0.85,
     metadata: {
-      page: 8,
-      chapter: "Chapter 1: Introduction to NLP"
+      page: 20,
+      chapter: "Chapter 3: Personal Finance"
     }
   }
 ];
+
 
 const handleApiError = async (apiCall, mockResponse) => {
   try {

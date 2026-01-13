@@ -1,4 +1,4 @@
-import api from "./axios";
+import api from "../axios";
 
 // Users endpoints
 export const getUsers = () =>

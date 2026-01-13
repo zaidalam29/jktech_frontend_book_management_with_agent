@@ -1,4 +1,4 @@
-import api from "./axios";
+import api from "../axios";
 
 // Handle API errors consistently
 const handleApiError = async (apiCall) => {

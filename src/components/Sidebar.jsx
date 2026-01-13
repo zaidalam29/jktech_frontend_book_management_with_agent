@@ -6,15 +6,17 @@ export default function Sidebar() {
   const [open, setOpen] = useState(true);
   const location = useLocation();
 
+
   const navItems = [
-    { path: "/books", label: "Books" },
-    { path: "/add-book", label: "Add Book" },
-    { path: "/documents", label: "Documents" },
-    { path: "/ingestion", label: "Ingestion" },
-    { path: "/rag", label: "RAG Search" },
-    { path: "/summary", label: "Summary" },
-    { path: "/admin/users", label: "Admin Panel" },
+    { path: "/books", label: "Book List" },
+    { path: "/add-book", label: "Create Book" },
+    { path: "/documents", label: "Doc Files" },
+    { path: "/ingestion", label: "Data Ingestion" },
+    { path: "/rag", label: "Smart RAG Search" },
+    { path: "/summary", label: "Overview" },
+    { path: "/admin/users", label: "User Management" },
   ];
+
 
   const isActive = (path) => location.pathname.startsWith(path);
 
@@ -27,9 +29,8 @@ export default function Sidebar() {
     <div className="d-flex">
       {/* Sidebar */}
       <aside
-        className={`bg-dark text-white p-3 ${
-          open ? "d-block" : "d-none d-md-block"
-        }`}
+        className={`bg-dark text-white p-3 ${open ? "d-block" : "d-none d-md-block"
+          }`}
         style={{ width: "240px" }}
       >
         {/* Header */}
@@ -49,11 +50,10 @@ export default function Sidebar() {
             <li key={item.path} className="nav-item">
               <Link
                 to={item.path}
-                className={`nav-link ${
-                  isActive(item.path)
+                className={`nav-link ${isActive(item.path)
                     ? "active bg-primary"
                     : "text-white"
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>

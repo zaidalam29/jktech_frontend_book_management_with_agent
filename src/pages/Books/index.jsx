@@ -127,7 +127,7 @@ export default function Books() {
         <div>
           <h3 className="fw-semibold mb-1">
             <i className="bi bi-book-half text-primary me-2"></i>
-            Book Management
+            Book List
           </h3>
 
           <nav aria-label="breadcrumb">
