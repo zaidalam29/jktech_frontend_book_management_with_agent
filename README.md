@@ -100,7 +100,7 @@ http://localhost:3000
 git clone <repo-url>
 
 # Go inside project folder
-cd frontend_book_doc_app
+cd jktech_frontend_book_management_with_agent
 
 # Install dependencies
 npm install
