@@ -1,22 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { logout } from "../api/auth";
+import "./Sidebar.css";
 
 export default function Sidebar() {
-  const [open, setOpen] = useState(true);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
 
-
   const navItems = [
-    { path: "/books", label: "Book List" },
-    { path: "/add-book", label: "Create Book" },
-    { path: "/documents", label: "Doc Files" },
-    { path: "/ingestion", label: "Data Ingestion" },
-    { path: "/rag", label: "Smart RAG Search" },
-    { path: "/summary", label: "Overview" },
-    { path: "/admin/users", label: "User Management" },
+    { path: "/books", label: "Book List", icon: "bi-book-half" },
+    { path: "/add-book", label: "Create Book", icon: "bi-plus-circle" },
+    { path: "/documents", label: "Doc Files", icon: "bi-file-earmark-text" },
+    { path: "/ingestion", label: "Data Ingestion", icon: "bi-cloud-upload" },
+    { path: "/rag", label: "Smart RAG Search", icon: "bi-search" },
+    { path: "/summary", label: "Overview", icon: "bi-pie-chart" },
+    { path: "/admin/users", label: "User Management", icon: "bi-people" },
   ];
-
 
   const isActive = (path) => location.pathname.startsWith(path);
 
@@ -26,68 +25,88 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="d-flex">
-      {/* Sidebar */}
-      <aside
-        className={`bg-dark text-white p-3 ${open ? "d-block" : "d-none d-md-block"
-          }`}
-        style={{ width: "240px" }}
-      >
-        {/* Header */}
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <h5 className="mb-0">Book Manager Pro</h5>
-          <button
-            className="btn btn-sm btn-outline-light d-md-none"
-            onClick={() => setOpen(false)}
-          >
-            ✕
-          </button>
+    <>
+      {/* Mobile Navbar - Only visible on mobile */}
+      <nav className="mobile-navbar d-lg-none">
+        <div className="container-fluid">
+          <div className="d-flex align-items-center justify-content-between">
+            <button
+              className="hamburger-btn"
+              onClick={() => setIsMobileOpen(true)}
+              aria-label="Open menu"
+            >
+              <i className="bi bi-list fs-4"></i>
+            </button>
+            
+            <div className="d-flex align-items-center">
+              <h5 className="mb-0 ms-3">
+                <i className="bi bi-book-fill me-2" style={{ color: '#667eea' }}></i>
+                Book Manager Pro
+              </h5>
+            </div>
+            
+            <div style={{ width: '40px' }}></div> {/* For balance */}
+          </div>
         </div>
+      </nav>
 
-        {/* Nav */}
-        <ul className="nav nav-pills flex-column gap-1">
-          {navItems.map((item) => (
-            <li key={item.path} className="nav-item">
-              <Link
-                to={item.path}
-                className={`nav-link ${isActive(item.path)
-                    ? "active bg-primary"
-                    : "text-white"
-                  }`}
+      {/* Overlay for mobile */}
+      {isMobileOpen && (
+        <div
+          className="sidebar-overlay d-lg-none"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
+      {/* Sidebar - Hidden on mobile, visible on desktop */}
+      <aside className={`sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
+        <div className="sidebar-inner">
+          {/* Header */}
+          <div className="sidebar-header">
+            <div className="d-flex justify-content-between align-items-center">
+              <h5 className="mb-0 text-white fw-bold">
+                <i className="bi bi-book-fill me-2" style={{ color: '#667eea' }}></i>
+                Book Manager Pro
+              </h5>
+              <button
+                className="close-btn d-lg-none"
+                onClick={() => setIsMobileOpen(false)}
+                aria-label="Close menu"
               >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+                <i className="bi bi-x-lg fs-4"></i>
+              </button>
+            </div>
+          </div>
 
-        {/* Logout */}
-        <div className="mt-auto pt-4">
-          <button
-            className="btn btn-outline-danger w-100"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
+          {/* Navigation */}
+          <nav className="sidebar-nav">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setIsMobileOpen(false)}
+                className={`nav-link-custom ${
+                  isActive(item.path) ? "active" : ""
+                }`}
+              >
+                <i className={`bi ${item.icon}`}></i>
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </nav>
+
+          {/* Footer / Logout */}
+          <div className="sidebar-footer">
+            <button
+              className="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center gap-2"
+              onClick={handleLogout}
+            >
+              <i className="bi bi-box-arrow-right"></i>
+              Logout
+            </button>
+          </div>
         </div>
       </aside>
-
-      {/* Main Content */}
-      <div className="flex-grow-1">
-        {/* Mobile top bar */}
-        <div className="d-md-none p-2 border-bottom">
-          <button
-            className="btn btn-dark"
-            onClick={() => setOpen(true)}
-          >
-            ☰ Menu
-          </button>
-        </div>
-
-        <div className="p-4">
-          {/* Page content here */}
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
